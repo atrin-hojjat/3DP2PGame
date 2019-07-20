@@ -1,7 +1,7 @@
 {
 	"obstacles" : [
 		{
-			"type": 1,
+			"type": "Mat1",
 			"x": -6.5,
 			"y": 2.5,
 			"z": 7,
@@ -10,13 +10,29 @@
 			"depth": 1
 		},
 		{
-			"type": 2,
+			"type": "Mat1",
 			"x": 1.5,
 			"y": 2,
 			"z": 7,
 			"width": 1,
 			"height": 4,
 			"depth": 3
+		}
+	],
+	"materials": [
+		{
+			"name": "Mat1",
+			"mat": {
+				"type": "MeshPhongMaterial",
+				"color": 16777215,
+				"ambient": 16777215,
+				"emissive": 0,
+				"specular": 1118481,
+				"shininess": 30,
+				"opacity": 1,
+				"transparent": false,
+				"wireframe": false
+			}
 		}
 	]
 }

@@ -6,8 +6,8 @@
 
 var host = window.location.origin;
 
-var obstacles = [];
-var camera, scene, renderer
+var obstacles = [], materials = new Map();
+var camera, scene, renderer;
 var plane;
 
 var pxval = 5 ;
@@ -57,13 +57,6 @@ $( document ).ready(function() {
 		scene.add( plane );
 	}
 
-
-	// var material1 = new THREE.MeshBasicMaterial({ color: 0xffffff, envMap: scene.background } );
-	var material1 = new THREE.MeshBasicMaterial({ color: 0x000000} );
-	var material2 = new THREE.MeshBasicMaterial( { color: 0xffffff, envMap: scene.background, refractionRatio: 0.95 } );
-	material2.envMap.mapping = THREE.CubeRefractionMapping;
-
-
 	renderer = new THREE.WebGLRenderer();
 	renderer.setSize(window.innerWidth, window.innerHeight);
 	document.getElementById('stage').appendChild(renderer.domElement);
@@ -111,11 +104,14 @@ $( document ).ready(function() {
 	// }, 'json');
 	$.getJSON(host + '/map/001').done(function(data) {
 		console.log("Reading map");
+		var JSMatLoader = new THREE.MaterialLoader();
+		data.materials.forEach(function(element) {
+			materials.set(element.name, JSMatLoader.parse(element.mat));
+		});
 		data.obstacles.forEach(function(element) {
 			var obs;
 			var geom = new THREE.BoxBufferGeometry(element.width, element.height, element.depth);
-			if(element.type == 1) obs = new THREE.Mesh(geom, material1);
-			else obs = new THREE.Mesh(geom, material2);
+			obs = new THREE.Mesh(geom, materials[element.material]);
 			obs.position.x = element.x;
 			obs.position.y = element.y;
 			obs.position.z = element.z;
