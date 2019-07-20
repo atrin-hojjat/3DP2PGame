@@ -1,0 +1,22 @@
+{
+	"obstacles" : [
+		{
+			"type": 1,
+			"x": -6.5,
+			"y": 2.5,
+			"z": 7,
+			"width": 5,
+			"height": 5,
+			"depth": 1
+		},
+		{
+			"type": 2,
+			"x": 1.5,
+			"y": 2,
+			"z": 7,
+			"width": 1,
+			"height": 4,
+			"depth": 3
+		}
+	]
+}
