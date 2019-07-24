@@ -1,4 +1,9 @@
 {
+	"plane": {
+		"x": 1000,
+		"y": 1000,
+		"mat": "PlaneMat"
+	},
 	"obstacles" : [
 		{
 			"type": "Mat1",
@@ -32,6 +37,13 @@
 				"opacity": 1,
 				"transparent": false,
 				"wireframe": false
+			}
+		},
+		{
+			"name": "PlaneMat",
+			"mat": {
+				"type": "MeshBasicMaterial",
+				"color": 16777215
 			}
 		}
 	]
